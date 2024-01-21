@@ -6,7 +6,7 @@ from pyrogram.types import *
 from logging import getLogger
 from AnonXMusic import LOGGER
 from AnonXMusic import app 
-from Love.database.weldb import *
+from AnonXMusic.plugins.tools.sweldb import *
 from AnonXMusic.config import LOG_GROUP_ID
 
 COMMAND_HANDLER = ". /".split()
