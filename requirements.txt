@@ -24,3 +24,4 @@ yt-dlp
 youtube-search
 youtube-search-python
 motor==3.3.2
+async_pymongo
