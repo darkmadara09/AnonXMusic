@@ -3,7 +3,7 @@
 
 from async_pymongo import AsyncClient
 
-from Bikash.config import MONGO_DB_URI
+from AnonXMusic.config import MONGO_DB_URI
 
 DBNAME = "AnonXMusic"
 
