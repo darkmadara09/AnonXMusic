@@ -25,14 +25,20 @@ class temp:
 
 def circle(pfp, size=(450, 450)):
     pfp = pfp.resize(size, Image.ANTIALIAS).convert("RGBA")
-    bigsize = (pfp.size[0] * 3, pfp.size[1] * 3)
-    mask = Image.new("L", bigsize, 0)
+    
+    # Create a new transparent image for output with the same size as the resized PFP
+    output = Image.new("RGBA", size, (0, 0, 0, 0))
+    
+    # Create a mask with the same size as the resized PFP
+    mask = Image.new("L", size, 0)
     draw = ImageDraw.Draw(mask)
-    draw.ellipse((0, 0) + bigsize, fill=255)
-    mask = mask.resize(pfp.size, Image.ANTIALIAS)
-    mask = ImageChops.darker(mask, pfp.split()[-1])
-    pfp.putalpha(mask)
-    return pfp
+    
+    # Draw a white, filled circle on the mask image
+    draw.ellipse((0, 0) + size, fill=255)
+    
+    # Apply the mask to the PFP using the alpha channel
+    output.paste(pfp, (0, 0), mask)
+    return output
 
 def welcomepic(pic, user, chat, id, uname):
     background = Image.open("AnonXMusic/bg.jpg")
