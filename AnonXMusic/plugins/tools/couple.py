@@ -4,7 +4,7 @@ from datetime import datetime
 
 from pyrogram import filters
 
-from AnonXMusic.utils.dbfun import get_couple, save_couple
+from AnonXMusic.database.coupledb import get_couple, save_couple
 from AnonXMusic import app
 
 # <=======================================================================================================>
