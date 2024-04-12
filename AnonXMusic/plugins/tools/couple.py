@@ -101,7 +101,7 @@ async def nibba_nibbi(_, message):
                 print(c1_id, c2_id, c1_name, c2_name)
                 couple_selection_message = f"""⎊ ᴄᴏᴜᴘʟᴇ ᴏғ ᴛʜᴇ ᴅᴀʏ ⎊
 ───────────────
-[{c1_name}](tg://openmessage?user_id={c1_id}) + [{c2_name}](tg://openmessage?user_id={c2_id}) = 💞
+<a href="tg://openmessage?user_id={c1_id}">{c1_name}</a> + <a href="tg://openmessage?user_id={c2_id}">{c2_name}</a> = 💞
 ───────────────
 ɴᴇᴡ ᴄᴏᴜᴘʟᴇ ᴄᴀɴ ʙᴇ ᴄʜᴏᴏsᴇɴ ᴀᴛ 12AM {tomorrow}"""
                 await _.send_animation(
