@@ -2,7 +2,7 @@ from typing import Dict, Union
 
 from pymongo import MongoClient
 
-from AnonXMusic import MONGO_DB_URI
+from config import MONGO_DB_URI
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
