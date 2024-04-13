@@ -92,11 +92,11 @@ async def today_(_, message):
 
             for idx, (user_id, total_messages) in enumerate(sorted_users_data, start=1):
                 try:
-                   user_name = (await app.get_users(user_id)).first_name
-                except:
-                    user_name = "Unknown"
-                user_info = f"{idx}. {user_name} ➠ {total_messages} messages\n"
-                response += user_info
+                    user_name = (await app.get_users(user_id)).first_name
+                except:
+                    user_name = "Unknown"
+                user_info = f"{idx}.   {user_name} ➠ {total_messages}\n"
+                response += user_info
             button = InlineKeyboardMarkup(
                 [[    
                    InlineKeyboardButton("ᴏᴠᴇʀᴀʟʟ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ", callback_data="overall"),
