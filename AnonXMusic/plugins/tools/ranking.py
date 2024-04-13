@@ -86,15 +86,17 @@ async def today_(_, message):
         users_data = [(user_id, user_data["total_messages"]) for user_id, user_data in today[chat_id].items()]
         sorted_users_data = sorted(users_data, key=lambda x: x[1], reverse=True)[:10]
 
-        if sorted_users_data:
-            response = "✦ 📈 ᴛᴏᴅᴀʏ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ\n\n"
-            for idx, (user_id, total_messages) in enumerate(sorted_users_data, start=1):
-                try:
-                    user_name = (await app.get_users(user_id)).first_name
-                except:
-                    user_name = "Unknown"
-                user_info = f"{idx}.   {user_name} ➠ {total_messages}\n"
-                response += user_info
+        total_messages_count = sum(user_data['total_messages'] for user_data in today[chat_id].values())
+
+response = f"✦ 📈 ᴛᴏᴅᴀʏ ᴛᴏᴛᴀʟ ᴍᴇssᴀɢᴇs: {total_messages_count}\n\n"
+
+for idx, (user_id, total_messages) in enumerate(sorted_users_data, start=1):
+    try:
+        user_name = (await app.get_users(user_id)).first_name
+    except:
+        user_name = "Unknown"
+    user_info = f"{idx}. {user_name} ➠ {total_messages} messages\n"
+    response += user_info
             button = InlineKeyboardMarkup(
                 [[    
                    InlineKeyboardButton("ᴏᴠᴇʀᴀʟʟ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ", callback_data="overall"),
