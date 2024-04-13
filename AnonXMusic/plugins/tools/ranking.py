@@ -86,8 +86,8 @@ async def today_(_, message):
         users_data = [(user_id, user_data["total_messages"]) for user_id, user_data in today[chat_id].items()]
         sorted_users_data = sorted(users_data, key=lambda x: x[1], reverse=True)[:10]
 
-        if sorted_users_data:
-            total_messages_count = sum(user_data['total_messages'] for user_data in today[chat_id].values())
+            if sorted_users_data:
+            total_messages_count = sum(user_data['total_messages'] for user_data in today[chat_id].values())
 
             response = f"✦ 📈 ᴛᴏᴅᴀʏ ᴛᴏᴛᴀʟ ᴍᴇssᴀɢᴇs: {total_messages_count}\n\n"
 
