@@ -76,22 +76,6 @@ def _watcher(_, message):
     user_data[user_id]["total_messages"] += 1    
     collection.update_one({"_id": user_id}, {"$inc": {"total_messages": 1}}, upsert=True)
 
-@app.on_message(filters.command("today"))
-async def today_(_, message):
-    chat_id = message.chat.id
-    if chat_id in today:
-        users_data = [(user_id, user_data["total_messages"]) for user_id, user_data in today[chat_id].items()]
-        sorted_users_data = sorted(users_data, key=lambda x: x[1], reverse=True)[:10]
-
-        if sorted_users_data:
-            response = "✦ 📈 ᴛᴏᴅᴀʏ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ\n\n"
-            for idx, (user_id, total_messages) in enumerate(sorted_users_data, start=1):
-                try:
-                    user_name = (await app.get_users(user_id)).first_name
-                except:
-                    user_name = "Unknown"
-                user_info = f"{idx}.   {user_name} ➠ {total_messages}\n"
-                response += user_info
 # ------------------- ranks ------------------ #          
 
 @app.on_message(filters.command("today"))
@@ -108,7 +92,7 @@ async def today_(_, message):
 
             for idx, (user_id, total_messages) in enumerate(sorted_users_data, start=1):
                 try:
-                    user_name = (await app.get_users(user_id)).first_name
+                   user_name = (await app.get_users(user_id)).first_name
                 except:
                     user_name = "Unknown"
                 user_info = f"{idx}. {user_name} ➠ {total_messages} messages\n"
