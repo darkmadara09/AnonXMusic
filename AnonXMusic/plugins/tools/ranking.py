@@ -95,10 +95,9 @@ async def today_(_, message):
                     user_name = "Unknown"
                 user_info = f"{idx}.   {user_name} ➠ {total_messages}\n"
                 response += user_info
-              
-              total_messages_count = sum(user_data['total_messages'] for user_data in today[chat_id].values())
-              response = f"✦ 📈 ᴛᴏᴅᴀʏ ᴛᴏᴛᴀʟ ᴍᴇssᴀɢᴇs: {total_messages_count}\n\n"    
-              for idx, (user_id, total_messages) in enumerate(sorted_users_data, start=1):
+            total_messages_count = sum(user_data['total_messages'] for user_data in today[chat_id].values())
+            response = f"✦ 📈 ᴛᴏᴅᴀʏ ᴛᴏᴛᴀʟ ᴍᴇssᴀɢᴇs: {total_messages_count}\n\n"    
+            for idx, (user_id, total_messages) in enumerate(sorted_users_data, start=1):
               try:  
                   user_name = (await app.get_users(user_id)).first_name  
               except:
