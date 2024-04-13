@@ -79,9 +79,9 @@ def _watcher(_, message):
 
 # ------------------- ranks ------------------ #          
 
-@app.on_callback_query(filters.regex("today"))
-async def today_rank(_, query):
-    chat_id = message.chat.id
+@app.on_message(filters.command("today"))
+async def today_(_, message):
+    chat_id = message.chat.id
     if chat_id in today:
         users_data = [(user_id, user_data["total_messages"]) for user_id, user_data in today[chat_id].items()]
         sorted_users_data = sorted(users_data, key=lambda x: x[1], reverse=True)[:10]
